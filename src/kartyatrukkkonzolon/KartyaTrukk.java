@@ -25,7 +25,7 @@ public class KartyaTrukk {
         this.pakli.ezVolt();
     }
             
-    private static int melyik() {
+    private int melyik() {
         boolean jo;
         int oszlop;
         do {
