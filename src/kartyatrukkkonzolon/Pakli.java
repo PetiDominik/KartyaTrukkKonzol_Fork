@@ -1,55 +1,35 @@
+
 package kartyatrukkkonzolon;
 
-import java.util.Scanner;
-
-public class KartyaTrukkKonzolon {
-
-   private static String[] pakli = new String[22];
-    private static final Scanner sc = new Scanner(System.in);
-
-    public static void main(String[] args) {
-        feltolt();
-        for (int i = 0; i < 3; i++) {
-            kirak();
-            int oszlop = melyik();
-            kever(oszlop);
-        }
-        ezVolt();
+public class Pakli {
+    
+    private Lap[] lapok = new Lap[22];
+    
+    public Pakli() {
+        this.feltolt();
     }
-
-    private static void feltolt() {
+    
+    public void feltolt() {
         String[] szinek = {"P", "T", "Z", "M"};
         String[] ertekek = {"Ász", "Kir", "Fel", "X", "IX", "VIII"};
         int i = 1;
         for (String szin : szinek) {
             for (int e = 0; e < ertekek.length && i < pakli.length; e++) {
-                pakli[i++] = szin + "_" + ertekek[e];
+                this.lapok[i++] = new Lap(szin + "_" + ertekek[e]);
             }
         }
-
     }
     
-    private static void kirak() {
-        for (int i = 1; i < pakli.length; i++) {
-            System.out.printf("%-8s", pakli[i]);
+    public void kirak() {
+        for (int i = 1; i < this.lapok.length; i++) {
+            System.out.printf("%-8s", this.lapok[i]);
             if (i % 3 == 0) {
                 System.out.println("");
             }
         }
     }
-
-    private static int melyik() {
-        boolean jo;
-        int oszlop;
-        do {
-            System.out.print("melyik oszlop (1-3): ");
-            oszlop = sc.nextInt();
-            jo = oszlop >= 1 && oszlop <= 3;
-        } while (!jo);
-        return oszlop;
-    }
-
-    private static void kever(int oszlop) {
+    
+    public void kever(oszlop) {
         // mindig középre a választott
         String[] ujPakli = new String[22];
         switch (oszlop) {
@@ -77,9 +57,8 @@ public class KartyaTrukkKonzolon {
         }
         pakli = ujPakli;
     }
-
-    private static void ezVolt() {
+    
+    public void ezVolt() {
         System.out.println("A választott lap: " + pakli[11]);
     }
-
 }
