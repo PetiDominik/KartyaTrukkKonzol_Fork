@@ -11,5 +11,5 @@ public class Lap {
     public String getLeiras() {
         return this.leiras;
     }
-    
+
 }
