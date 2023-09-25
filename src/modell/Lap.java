@@ -1,5 +1,5 @@
 
-package kartyatrukkkonzolon;
+package modell;
 
 public class Lap {
     private String leiras;

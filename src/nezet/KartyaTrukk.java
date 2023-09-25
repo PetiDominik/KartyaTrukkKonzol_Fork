@@ -1,6 +1,8 @@
-package kartyatrukkkonzolon;
+package nezet;
 
+import modell.Pakli;
 import java.util.Scanner;
+import modell.Lap;
 
 public class KartyaTrukk {
 
@@ -9,20 +11,17 @@ public class KartyaTrukk {
     
     public KartyaTrukk() {
         this.pakli = new Pakli();
+        this.indit();
     }
     
-    public static void main(String[] args) {
-        new KartyaTrukk().indit();
-    }
-    
-    private void indit() {
+    public void indit() {
         
         for (int i = 0; i < 3; i++) {
-            this.pakli.kirak();
+            kiir(this.pakli.kirak());
             int oszlop = melyik();
             this.pakli.kever(oszlop);
         }
-        this.pakli.ezVolt();
+        kiir("A választott lap: " + this.pakli.ezVolt().getLeiras());
     }
             
     private int melyik() {
@@ -34,5 +33,9 @@ public class KartyaTrukk {
             jo = oszlop >= 1 && oszlop <= 3;
         } while (!jo);
         return oszlop;
+    }
+    
+    private void kiir(String szoveg) {
+        System.out.println(szoveg);
     }
 }
